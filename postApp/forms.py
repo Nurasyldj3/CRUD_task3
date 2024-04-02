@@ -7,9 +7,3 @@ class AddPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'image', 'content')
-
-
-class NewUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')

@@ -8,8 +8,4 @@ urlpatterns = [
     path('post/delete/<int:pk>/', views.deletePost, name='deletePost'),
     path('post/edit/<int:pk>/', views.editPost, name='editPost'),
 
-    # users
-    path('user/sign-up/', views.sign_up_page, name='sign_up_page'),
-    path('user/login/', views.login_page, name='login_page'),
-    path('user/logout/', views.logout_request, name='logout_request'),
 ]

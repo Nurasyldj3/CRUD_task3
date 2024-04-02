@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends './base.html' %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
@@ -17,8 +17,8 @@
                 <h2>Nothing</h2>
                 {% endif %}
                 <p class="mb-3">{{ post.content }}</p>
-                <a href="{% url 'editPost' pk=post.pk %}" class="button is-info">Edit</a>
-                <a href="{% url 'deletePost' pk=post.pk %}" class="button is-danger">Delete</a>
+                <a href="{% url 'editPost' pk=post.pk %}" class="button is-info">Изменить</a>
+                <a href="{% url 'deletePost' pk=post.pk %}" class="button is-danger">Удалить</a>
 
             </div>
         </article>

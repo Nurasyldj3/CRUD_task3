@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends './base.html' %}
 
 {% block title %}Delete post{% endblock %}
 
@@ -6,10 +6,10 @@
 {% block content %}
     <div class="container">
         <form method="post">
-            <h1 class="title mt-5 mb-5">Delete post {{ post.title }}?</h1>
+            <h1 class="title mt-5 mb-5">Удалить пост {{ post.title }}?</h1>
             {% csrf_token %}
-            <button class="button is-danger">Yes</button>
-            <a href="{% url 'postDetail' pk=post.pk %}" class="button is-info">No</a>
+            <button class="button is-danger">Да</button>
+            <a href="{% url 'postDetail' pk=post.pk %}" class="button is-info">Нет</a>
         </form>
     </div>
 {% endblock %}

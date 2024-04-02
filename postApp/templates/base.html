@@ -16,7 +16,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{% url 'homePage' %}">
-                    <h1 class="title has-text-white">Куда сходим</h1>
+                    <h1 class="title has-text-white">Новости</h1>
                 </a>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -36,42 +36,11 @@
                         <div class="navbar-item">
                         <div class="buttons">
                             <a href="{% url 'addPost' %}" class="button is-white is-rounded">
-                                Add post
+                                Добавить пост
                             </a>
                         </div>
                     </div>
 
-
-
-                    {% if user.is_authenticated %}
-                  <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                      @{{ user.username }}
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        {% if user.is_superuser %}
-                      <a class="navbar-item" href="{% url 'admin:index' %}">
-                        Админ панел
-                      </a>
-                        {% endif %}
-                      <a class="navbar-item"  href="{% url 'logout_request' %}">
-                        выход
-                      </a>
-                    </div>
-                  </div>
-                    {% else %}
-                  <div class="navbar-item">
-                    <div class="buttons">
-                      <a class="button is-primary" href="{% url 'sign_up_page' %}">
-                        <strong>Регистрация</strong>
-                      </a>
-                      <a class="button is-light" href="{% url 'login_page' %}">
-                        Вход
-                      </a>
-                    </div>
-                  </div>
-                    {% endif %}
             </div>
 
 

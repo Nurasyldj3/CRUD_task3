@@ -4,7 +4,7 @@ from .forms import AddPostForm
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
-from .forms import NewUserForm
+
 
 def homePage(request):
     posts = Post.objects.all().order_by('-postDate')[:3]
@@ -16,7 +16,7 @@ def homePage(request):
 
 def postDetail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, "user/post-detail.html", {
+    return render(request, "post-detail.html", {
         'post': post
     })
 
@@ -30,7 +30,7 @@ def addPost(request):
     else:
         form = AddPostForm()
 
-    return render(request, "user/add-post.html", {
+    return render(request, "add-post.html", {
         'form': form
     })
 
@@ -39,7 +39,7 @@ def deletePost(request, pk):
     if request.method == "POST":
         post.delete()
         return redirect("homePage")
-    return render(request, "user/delete-post.html", {
+    return render(request, "delete-post.html", {
         'post': post
     })
 
@@ -53,7 +53,7 @@ def editPost(request, pk):
     else:
         form = AddPostForm()
 
-    return render(request, "user/edit-post.html", {
+    return render(request, "edit-post.html", {
         'post': post,
         'form': form
     })
@@ -61,42 +61,4 @@ def editPost(request, pk):
 
 
 
-
-
-
-
-def sign_up_page(request):
-    if request.method == 'POST':
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("login_page")
-
-    else:
-        form = NewUserForm()
-
-    context = {'form': form}
-
-    return render(request, "./sign-up.html", context)
-
-
-def login_page(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("homePage")
-    else:
-        form = AuthenticationForm()
-    context = {'form': form}
-    return render(request, "./login.html", context)
-
-
-def logout_request(request):
-    logout(request)
-    return redirect("homePage")
 
